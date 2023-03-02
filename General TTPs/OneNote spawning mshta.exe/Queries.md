@@ -7,6 +7,7 @@
 | `security_content_ctime(lastTime)`
 | table dest, user, firstTime, lastTime, parent_process_name, parent_process, process_name, process
 ```
+
 # MS Defender
 ## TTP hunt
 ```
