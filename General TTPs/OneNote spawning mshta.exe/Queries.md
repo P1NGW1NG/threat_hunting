@@ -26,5 +26,4 @@ event_platform=win event_simpleName=ProcessRollup2 FileName IN ("mshta.exe") Par
 | stats earliest(ProcessStartTime_decimal) as firstRun, latest(ProcessStartTime_decimal) as lastRun, values(CommandLine) as cmdsRun by cid, aid, company, ComputerName, ParentBaseFileName, ParentProcessId_decimal, FileName
 | convert ctime(firstRun), ctime(lastRun)
 | table cid, aid, company, ComputerName, firstRun, lastRun, ParentBaseFileName, FileName, cmdsRun
-
 ```
