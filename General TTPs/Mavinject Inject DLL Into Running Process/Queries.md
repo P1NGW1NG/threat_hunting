@@ -14,7 +14,7 @@
 DeviceProcessEvents 
 | where Timestamp > ago(30d) 
 | where ProcessCommandLine has "/INJECTRUNNING"
-and InitiatingProcessFileName not =~ "AppVClient.exe"
+and InitiatingProcessFileName !~ "AppVClient.exe"
 | summarize Min = min(Timestamp), Max = max(Timestamp) by DeviceName, AccountDomain, AccountName, InitiatingProcessFileName, InitiatingProcessCommandLine, InitiatingProcessId, FileName, ProcessCommandLine
 | project DeviceName, AccountDomain, AccountName, Min, Max, InitiatingProcessFileName, InitiatingProcessId, InitiatingProcessCommandLine, FileName, ProcessCommandLine
 ```
